@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Envíos | RápidoExpress</title>
+<link rel="stylesheet" href="style.css">
+
+<script>
+let envios = [
+  {id: "A-001", origen: "Bogotá", destino: "Cali", estado: "Pendiente"},
+  {id: "A-002", origen: "Medellín", destino: "Pereira", estado: "Preparacion"},
+  {id: "A-003", origen: "Cali", destino: "Villavicencio", estado: "En Transito"},
+];
+
+function renderEnvios(lista){
+  const contenedor = document.getElementById("listaEnvios");
+  contenedor.innerHTML = "";
+
+  lista.forEach((e, index) => {
+    contenedor.innerHTML += `
+      <div class="card">
+        <span class="status ${e.estado}">${e.estado}</span>
+        <h3>Envío #${e.id}</h3>
+        <p>${e.origen} → ${e.destino}</p>
+
+        <button class="btn" onclick="editarEnvio(${index})">Editar</button>
+        <button class="btn dark" onclick="eliminarEnvio(${index})">Eliminar</button>
+      </div>
+    `;
+  });
+}
+
+function agregarEnvio(){
+  const id = document.getElementById("id").value;
+  const origen = document.getElementById("origen").value;
+  const destino = document.getElementById("destino").value;
+
+  if(!id || !origen || !destino) return;
+
+  envios.push({id, origen, destino, estado:"pendiente"});
+  renderEnvios(envios);
+}
+
+function eliminarEnvio(index){
+  envios.splice(index,1);
+  renderEnvios(envios);
+}
+
+function editarEnvio(index){
+  const nuevoOrigen = prompt("Nuevo origen:");
+  const nuevoDestino = prompt("Nuevo destino:");
+
+  if(nuevoOrigen && nuevoDestino){
+    envios[index].origen = nuevoOrigen;
+    envios[index].destino = nuevoDestino;
+    renderEnvios(envios);
+  }
+}
+
+window.onload = () => renderEnvios(envios);
+</script>
+
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>RápidoExpress</h2>
+  <a href="pedidos.html">Pedidos</a>
+  <a href="envios.html">Envíos</a>
+  <a href="inventario.html">Inventario</a>
+  <a href="usuarios.html">Usuarios</a>
+  <a href="reportes.html">Reportes</a>
+  <a href="index.html">Salir</a>
+</div>
+
+<div class="main">
+  <h1>Gestión de Envíos</h1>
+
+  <!--  BUSCADOR -->
+  <input type="text" id="busqueda" placeholder="Buscar envío..." onkeyup="buscarEnvio()">
+
+  <!--  FORMULARIO -->
+  <div class="card">
+    <h3>Agregar Envío</h3>
+    <input id="id" placeholder="ID envío">
+    <input id="origen" placeholder="Origen">
+    <input id="destino" placeholder="Destino">
+    <button class="btn" onclick="agregarEnvio()">Agregar</button>
+  </div>
+
+  <!--  LISTA -->
+  <div class="grid" id="listaEnvios"></div>
+
+</div>
+
+</body>
+</html>
+

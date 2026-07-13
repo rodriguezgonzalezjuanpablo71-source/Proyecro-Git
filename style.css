@@ -1,0 +1,129 @@
+*{
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  margin: 0;
+  background: #f5f6f8;
+  display: flex;
+}
+
+/* SIDEBAR VERTICAL */
+.sidebar{
+  width: 220px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: #1f2937;
+  color: #fff;
+  padding: 20px;
+}
+
+.sidebar h2{
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.sidebar a{
+  display: block;
+  color: #d1d5db;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.sidebar a.active,
+.sidebar a:hover{
+  background: #dc2626;
+  color: #fff;
+}
+
+/* CONTENIDO PRINCIPAL HACIA ABAJO */
+.main{
+  margin-left: 240px;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* TARJETAS */
+.card{
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+}
+
+/* BOTONES */
+.btn{
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.btn.dark{
+  background: #111827;
+}
+
+/* GRID CONVERTIDO A COLUMNA */
+.grid{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ESTADOS */
+.status{
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.pendiente{ background: #fde68a; }
+.preparacion{ background: #93c5fd; }
+.listo{ background: #86efac; }
+.entregado{ background: #fca5a5; }
+
+/* LOGIN */
+.login-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.login-box{
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  text-align: center;
+}
+
+/* INPUTS */
+input{
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.img-card{
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
